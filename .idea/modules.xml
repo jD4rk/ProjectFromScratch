@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file:///media/Shared/myWorkSpace/AndroidStudioProjects/ProjectFromScratch/ProjectFromScratch.iml" filepath="/media/Shared/myWorkSpace/AndroidStudioProjects/ProjectFromScratch/ProjectFromScratch.iml" />
       <module fileurl="file:///media/Shared/myWorkSpace/AndroidStudioProjects/ProjectFromScratch/app/app.iml" filepath="/media/Shared/myWorkSpace/AndroidStudioProjects/ProjectFromScratch/app/app.iml" />
     </modules>
   </component>
