@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+String APPLICATION_NAME = "projectfromscratch"
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.0"
+
+    if (project.hasProperty("KEY_STORE_FILE")) {
+        signingConfigs {
+            release {
+                storeFile file(KEY_STORE_FILE)
+                storePassword KEY_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+            debug {
+                storeFile file(KEY_STORE_FILE)
+                storePassword KEY_STORE_PASSWORD
+                keyAlias DEBUG_KEY_ALIAS
+                keyPassword DEBUG_KEY_PASSWORD
+            }
+        }
+    }
+
+    configurations {
+        all*.exclude group: 'commons-logging', module: 'commons-logging'
+        all*.exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+    }
+
+    defaultConfig {
+        applicationId "it.jdark.android."+APPLICATION_NAME
+        minSdkVersion 9
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources false
+            /*runProguard false*/
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+        }
+        debug {
+            minifyEnabled true
+            shrinkResources false
+            /*runProguard false*/
+            signingConfig signingConfigs.debug
+            versionNameSuffix "-debug"
+            applicationIdSuffix ".debug"
+        }
+    }
+
+    productFlavors {
+        flav1 {
+            applicationId "it.jdark.android."+APPLICATION_NAME+".demo"
+            versionName "1.0-demo"
+        }
+        flav2 {
+            applicationId "it.jdark.android."+APPLICATION_NAME+".full"
+            versionName "1.0-full"
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.0.0'
+
+    // Test Resources
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.9.5'
+    testCompile 'org.robolectric:robolectric:2.4'
+}
