@@ -2,6 +2,7 @@ package it.jdark.android.projectfromscratch;
 
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.TextView;
 
 import it.jdark.android.projectfromscratch.MainActivity;
@@ -25,6 +26,7 @@ public class MainActivityTest extends  ActivityInstrumentationTestCase2<MainActi
         mActivity = getActivity();
     }
 
+    @SmallTest
     public void testApplicationNotNull() {
         assertNotNull(mActivity);
     }
@@ -36,4 +38,11 @@ public class MainActivityTest extends  ActivityInstrumentationTestCase2<MainActi
 //        // Fail
 //        //assertNull(tv);
 //    }
+
+
+    @Override
+    public void tearDown() throws Exception {
+        mActivity.finish();
+        super.tearDown();
+    }
 }
