@@ -66,6 +66,14 @@ android {
         }
     }
 
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
 }
 
 dependencies {
@@ -76,4 +84,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.9.5'
     testCompile 'org.robolectric:robolectric:2.4'
+
+    // Butter Knight
+    compile 'com.jakewharton:butterknife:7.0.1'
 }
