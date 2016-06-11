@@ -1,48 +1,20 @@
 package it.jdark.android.projectfromscratch;
 
-import android.app.Activity;
-import android.test.ActivityInstrumentationTestCase2;
-import android.test.suitebuilder.annotation.SmallTest;
-import android.widget.TextView;
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
-import it.jdark.android.projectfromscratch.MainActivity;
+import org.junit.Rule;
+import org.junit.runner.RunWith;
 
 /**
  * Created by jdark on 13/03/15.
  */
+@RunWith(AndroidJUnit4.class)
+public class MainActivityTest {
 
-// Instrumental Test - Senza Robolectric
-public class MainActivityTest extends  ActivityInstrumentationTestCase2<MainActivity> {
-    MainActivity mActivity;
-
-    public MainActivityTest() {
-        super(MainActivity.class);
-    }
+    @Rule
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 
 
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-        mActivity = getActivity();
-    }
 
-    @SmallTest
-    public void testApplicationNotNull() {
-        assertNotNull(mActivity);
-    }
-
-//    public void testTextViewNotNull() {
-//        TextView tv = (TextView) mActivity.findViewById(R.id.textView);
-//        // Pass
-//        assertNotNull(tv);
-//        // Fail
-//        //assertNull(tv);
-//    }
-
-
-    @Override
-    public void tearDown() throws Exception {
-        mActivity.finish();
-        super.tearDown();
-    }
 }
