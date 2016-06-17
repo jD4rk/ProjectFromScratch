@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by jdark on 13/03/15.
  */
-public class SimpleUnitTest {
+public class ExampleUnitTest {
 
     @Test
     public void checkJUnitWork() {
